@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -29,10 +30,10 @@ class CustomerRepositoryTest {
     @ServiceConnection//  override the default connection details and use the annotated Testcontainer as the backend service.
     static PostgreSQLContainer<?> postgresSqlContainer = new PostgreSQLContainer<>("postgres:dontKnow");
 
-
-
     @Autowired
     CustomerRepository underTest;
+
+
 
     @BeforeEach
     void setUp() {//runs before each test
